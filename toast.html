@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>SleepTracker</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="calendar">
+        <div class="header">
+            <button id="prevBtn">
+                &lsaquo;
+            </button>
+            <div class="monthYear" id="monthYear"></div>
+            <button id="nextBtn">
+                &rsaquo;
+            </button>
+        </div>
+        <div class="days">
+            <div class="day">Mon</div>
+            <div class="day">Tue</div>
+            <div class="day">Wed</div>
+            <div class="day">Thu</div>
+            <div class="day">Fri</div>
+            <div class="day">Sat</div>
+            <div class="day">Sun</div>
+        </div>
+        <div class="dates" id="dates"></div>
+    </div>
+
+    <div class="nav">
+        <a id="home" href="/index.html"><i class="fa fa-home"></i></a>
+        <a id="about" href="about.html"><i class="fa fa-user"></i></a>
+        <div class="dropdown">
+            <button class="dropbtn"> 
+                <i class="fa fa-bars"></i>
+                <i class="fa fa-caret-up"></i>
+            </button>
+            <div class="dropdown-content">
+                <a class="active" href="toast.html">sleepToast</a>
+                <a href="typewriter.html">typewriter</a>
+                <a href="https://flocus.com/online-minimal-clock/" target="_blank">clock</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const monthYearElement = document.getElementById('monthYear');
+        const datesElement = document.getElementById('dates');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let currentDate = new Date();
+        let currentYear = currentDate.getFullYear();
+        let currentMonth = currentDate.getMonth();
+
+        const updateCalendar = () => {
+            const firstDayIndex = (new Date(currentYear, currentMonth, 1).getDay() + 6) % 7;
+            const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
+            const prevLastDay = new Date(currentYear, currentMonth, 0).getDate();
+            const lastDayIndex = (new Date(currentYear, currentMonth, lastDay).getDay() + 6) % 7;
+
+            // Update month-year display
+            monthYearElement.textContent = new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long', year: 'numeric' });
+
+            // Variable that stores the following generated dates
+            let datesHTML = "";
+
+            // Previous month's days (greyed out)
+            for (let i = firstDayIndex; i > 0; i--) {
+                datesHTML += `<div class="date inactive">${prevLastDay - firstDayIndex + i}</div>`;
+            }
+
+            // Current month's days + retrieve saved time
+            for (let i = 1; i <= lastDay; i++) {
+                const dateKey = `${currentYear}-${currentMonth + 1}-${i}`; 
+                const savedTime = localStorage.getItem(dateKey) || "";
+
+                const isToday = new Date(currentYear, currentMonth, i).toDateString() === new Date().toDateString();
+                const activeClass = isToday ? 'active' : '';
+
+                datesHTML += `<div class="date ${activeClass}" data-date="${dateKey}">
+                                <span class="dayNumber">${i}</span>
+                                <span class="timeStamp">${savedTime}</span>
+                              </div>`;
+            }
+
+            // Next month's days (greyed out)
+            for (let i = 1; i <= (6 - lastDayIndex); i++) {
+                datesHTML += `<div class="date inactive">${i}</div>`;
+            }
+
+            // Update the dates with the generated HTML
+            datesElement.innerHTML = datesHTML;
+
+            // if date clicked, stampTime
+            document.querySelectorAll(".date.active").forEach(dateElement => {
+                dateElement.addEventListener("click", stampTime);
+            });
+        };
+
+        const stampTime = (event) => {
+            const dateKey = event.currentTarget.dataset.date; // Get the date from clicked element
+            const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            localStorage.setItem(dateKey, currentTime); // Store time in localStorage
+
+            event.currentTarget.querySelector(".timeStamp").textContent = currentTime; // Update display
+        };
+
+        // Update the calendar when clicking prevBtn
+        prevBtn.addEventListener('click', () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            updateCalendar();
+        });
+
+        // Update the calendar when clicking nextBtn
+        nextBtn.addEventListener('click', () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            updateCalendar();
+        });
+
+        // Initial calendar update
+        updateCalendar();
+    </script>
+</body>
+
+</html>

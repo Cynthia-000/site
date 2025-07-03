@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>SleepTracker</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="note-section">
+        <input type="text" id="noteInput" placeholder="Enter a note">
+        <button onclick="saveNote()">Save Note</button>
+        <p id="savedNote"></p>
+    </div>
+</body>
+
+<script>
+    // Load saved note on page load
+    document.getElementById('savedNote').textContent = localStorage.getItem('userNote') || '';
+
+    function saveNote() {
+        const note = document.getElementById('noteInput').value;
+        localStorage.setItem('userNote', note);
+        document.getElementById('savedNote').textContent = note;
+    }
+</script>

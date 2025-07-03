@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>about</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .spinning-house {
+            color: #ff5869;
+            animation: spin 3s linear infinite;
+            /* 4s duration, infinite loop */
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* HAHAHQAHAHAHQHA reminder to put more animations if i have time lmaoo */
+    </style>
+
+</head>
+
+<body>
+    <div class="about-container">
+        <header id="welcome">
+            <a href="/index.html">
+                <h1>Welcome to My World 🌟</h1>
+            </a>
+        </header>
+        <section class="intro">
+            <p>Hey there! I'm Olivia — a creator, a dreamer, and definitely not your average person. If I had to
+                describe myself, I’d say I’m like a cup of coffee: a little bit sweet, a little bit strong, and always
+                ready to make your day better. (And I totally didn't just let ChatGPT write that :P )</p>
+        </section>
+
+        <section class="ehrenplatz">
+            <h4>
+                Here's the Ehrenplatz for the one and oni
+            </h4>
+            <h2 id="shabella">
+                ~ Shabella ✧˖°
+            </h2>
+
+            <footer>
+                <p>Thanks for stopping by! Feel free to browse around and see what I’m up to. If you want to chat or
+                    work on something cool together, hit me up!</p>
+            </footer>
+    </div>
+
+
+    <div class="nav">
+        <a id="home" href="oh-oh.html">
+            <i class="fa fa-home spinning-house"></i>
+        </a>
+        <a id="about" class="active" href="about.html"><i class="fa fa-user"></i></a>
+        <div class="dropdown">
+            <button class="dropbtn">
+                <i class="fa fa-bars"></i>
+                <i class="fa fa-caret-up"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="toast.html">sleepToast</a>
+                <a href="typewriter.html">typewriter</a>
+                <a href="https://flocus.com/online-minimal-clock/" target="_blank">clock</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

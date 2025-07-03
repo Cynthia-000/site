@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Praise&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #6f97c4;
+}
+
+a {
+    color: white;
+    padding: 14px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.title {
+    color: white;
+    font-size: 5em;
+}
+
+.nav {
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    z-index: 100;
+}
+
+.nav > a,
+.nav .dropbtn {
+    width: 100px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 14px;
+}
+
+.active {
+    color: hsla(0, 0%, 0%, 0.3);
+}
+
+.nav i {
+    font-size: 1.35em;
+    padding: 0px 2.5px;
+}
+
+.nav a:hover {
+    background-color: #ff5869;
+    color: white;
+}
+
+.dropdown .dropbtn {
+    background-color: #6f97c4;
+    color: white;
+    padding: 14px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+    background-color: #ff5869;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 100px;
+    bottom: 48px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    right: 0;
+    background-color: #6f97c4;
+    z-index: 100;
+}
+
+.dropdown-content a {
+    display: flex;
+    justify-content: center;
+    background-color: hsla(0, 0%, 0%, 0.2);
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+.dropdown-content a:hover {
+    background-color: hsla(0, 0%, 0%, 0.4);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.about-container {
+    background-color: white;
+    padding: 40px;
+    max-width: 900px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 10;
+    position: relative;
+}
+
+header h1 {
+    font-size: 3em;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+header h1:hover {
+    color: #ff5869;
+    transform: scale(1.1);
+    transition: 0.3s ease;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #6f97c4;
+    margin-bottom: 15px;
+}
+
+footer p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+#shabella {
+    font-family: Italics;
+    font-size: 2em;
+    color: #6f97c4;
+    margin-bottom: 15px;
+}
+
+
+
+.calendar {
+    margin-top: -20px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15% 15% 20px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.header button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+    margin: 0 20px;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+    text-align: center;
+    padding: 5px;
+    color: #999FA6;
+    font-weight: 500;
+}
+
+.dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.date {
+    display: flex;
+    flex-direction: column;
+    /* Stack children vertically */
+    justify-content: space-between;
+    /* Gleichmässiger Abstand */
+    align-items: center;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 12px 12px 17px 12px;
+    height: 80px;
+    width: 65px;
+    /* Ensure each date cell stays the same */
+    overflow: hidden;
+}
+
+.timeStamp {
+    font-size: 0.9em;
+}
+
+/* .dayNumber {
+    border-radius: 50%;
+    padding: 0 10px;
+    background: hsla(0, 0%, 0%, 0.1);
+} */
+
+.date:hover {
+    background: #ffc1c7;
+    color: black;
+}
+
+.date.active {
+    background: #ff5869;
+    color: white;
+}
+
+.date.inactive {
+    color: #d6d6d6;
+}
+
+.date.inactive:hover {
+    color: #ffffff;
+}
+
+.note-section {
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.note-section input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.note-section button {
+    padding: 8px;
+    background: #6f97c4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
